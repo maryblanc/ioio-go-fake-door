@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IOIO GO — Wcześniej wiesz. Masz więcej czasu na reakcję.</title>
+
+    <!-- Ikona IOIO w karcie przeglądarki -->
+    <link rel="icon" type="image/png" href="IOIO_AppIcon_1024x1024.png">
+
+    <!-- Ikona po dodaniu strony do ekranu iPhone'a -->
+    <link rel="apple-touch-icon" href="IOIO_AppIcon_1024x1024.png">
+
+    <style>
+
+        /* =========================
+           RESET
+           ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(0, 255, 255, 0.08),
+                    transparent 35%
+                ),
+                #050708;
+
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+        }
+
+
+        /* =========================
+           NAVIGATION
+           ========================= */
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 28px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            font-size: 22px;
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+        }
+
+        .logo img {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 10px;
+        }
+
+
+        /* =========================
+           HERO
+           ========================= */
+
+        .hero {
+            text-align: center;
+
+            padding: 80px 0 70px;
+        }
+
+        .badge {
+            display: inline-block;
+
+            padding: 8px 14px;
+            margin-bottom: 24px;
+
+            border: 1px solid rgba(0, 255, 255, 0.35);
+            border-radius: 999px;
+
+            color: #00ffff;
+
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+
+            background: rgba(0, 255, 255, 0.05);
+        }
+
+        h1 {
+            font-size: clamp(42px, 7vw, 76px);
+
+            line-height: 0.95;
+
+            margin-bottom: 28px;
+
+            letter-spacing: -2px;
+        }
+
+        h1 span {
+            color: #00ffff;
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            margin: 0 auto 35px;
+
+            color: #a9b0b5;
+
+            font-size: 19px;
+            line-height: 1.6;
+        }
+
+        .primary-button {
+            border: none;
+
+            cursor: pointer;
+
+            padding: 17px 28px;
+
+            border-radius: 14px;
+
+            background: #00ffff;
+            color: #020505;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        .primary-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 35px rgba(0, 255, 255, 0.2);
+        }
+
+        /* =========================
+   SUCCESS MESSAGE
+   ========================= */
+
+.success-message {
+    text-align: center;
+    padding: 10px 5px;
+}
+
+.success-icon {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 20px;
+
+    border-radius: 18px;
+
+    background: rgba(0, 255, 255, 0.10);
+
+    color: #00ffff;
+
+    font-size: 30px;
+}
+
+.success-message h2 {
+    margin-bottom: 12px;
+}
+
+.success-message p {
+    color: #858d92;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+
+        /* =========================
+           PRODUCT FORM
+           ========================= */
+
+        .section {
+            padding: 55px 0;
+        }
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #858d92;
+        }
+
+        .options {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 16px;
+        }
+
+        .option {
+            cursor: pointer;
+
+            padding: 25px 20px;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 18px;
+
+            background:
+                rgba(255, 255, 255, 0.04);
+
+            transition: 0.2s ease;
+        }
+
+        .option:hover {
+            border-color:
+                rgba(0, 255, 255, 0.35);
+
+            transform: translateY(-2px);
+        }
+
+        .option.selected {
+            border-color: #00ffff;
+
+            background:
+                rgba(0, 255, 255, 0.08);
+        }
+
+        .option-icon {
+            font-size: 30px;
+
+            margin-bottom: 15px;
+        }
+
+        .option h3 {
+            margin-bottom: 7px;
+
+            font-size: 17px;
+        }
+
+        .option p {
+            color: #858d92;
+
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           DRIVING SCENARIO
+           ========================= */
+
+        .scenario {
+            max-width: 650px;
+
+            margin: 0 auto;
+
+            padding: 30px;
+
+            border-radius: 22px;
+
+            background:
+                rgba(255, 255, 255, 0.05);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .scenario-card {
+            padding: 25px;
+
+            border-radius: 18px;
+
+            background: #070b0d;
+
+            border:
+                1px solid rgba(255, 70, 70, 0.45);
+
+            margin-bottom: 28px;
+        }
+
+        .alert-label {
+            color: #ff5757;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            letter-spacing: 0.8px;
+
+            margin-bottom: 8px;
+        }
+
+        .scenario-card h3 {
+            font-size: 30px;
+
+            margin-bottom: 12px;
+        }
+
+        .scenario-card p {
+            color: #9ba4a9;
+
+            font-size: 16px;
+        }
+
+        .reaction-title {
+            font-size: 15px;
+            font-weight: 700;
+
+            margin-bottom: 12px;
+        }
+
+        .reaction-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10px;
+        }
+
+        .reaction {
+            padding: 13px 15px;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.1);
+
+            border-radius: 12px;
+
+            background:
+                rgba(255, 255, 255, 0.02);
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            transition: 0.2s ease;
+        }
+
+        .reaction:hover {
+            border-color:
+                rgba(0, 255, 255, 0.4);
+
+            background:
+                rgba(0, 255, 255, 0.04);
+        }
+
+        .reaction.selected {
+            border-color: #00ffff;
+
+            background: rgba(0, 255, 255, 0.08);
+
+            color: #00ffff;
+        }
+
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+            text-align: center;
+
+            padding: 60px 0 35px;
+
+            color: #555e63;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           MODAL
+           ========================= */
+
+        .modal {
+            position: fixed;
+
+            inset: 0;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(0, 0, 0, 0.75);
+
+            backdrop-filter: blur(8px);
+
+            z-index: 100;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            width: min(500px, 100%);
+
+            padding: 35px;
+
+            border-radius: 24px;
+
+            background: #0b1012;
+
+            border:
+                1px solid rgba(0, 255, 255, 0.18);
+        }
+
+        .modal-content h2 {
+            margin-bottom: 12px;
+        }
+
+        .modal-content > p {
+            color: #858d92;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 15px;
+
+            margin-bottom: 12px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.1);
+
+            background: #11181a;
+
+            color: white;
+
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+
+            border-color: #00ffff;
+        }
+
+        .modal-buttons {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 8px;
+        }
+
+        .secondary-button {
+            flex: 1;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.1);
+
+            background: transparent;
+
+            color: white;
+
+            cursor: pointer;
+        }
+
+        .modal-buttons .primary-button {
+            flex: 2;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+           ========================= */
+
+        @media (max-width: 800px) {
+
+            .options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                padding-top: 50px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .options {
+                grid-template-columns: 1fr;
+            }
+
+            .reaction-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                letter-spacing: -1px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .modal-content {
+                padding: 25px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- =========================
+         NAVIGATION
+         ========================= -->
+
+    <nav>
+
+        <div class="logo">
+
+            <img
+                src="IOIO_AppIcon_1024x1024.png"
+                alt="IOIO"
+            >
+
+            <span>IOIO GO</span>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+         ========================= -->
+
+    <section class="hero">
+
+        <div class="badge">
+            Wczesne ostrzeganie dla kierowców
+        </div>
+
+        <h1>
+            Wiesz wcześniej.<br>
+            <span>Masz więcej czasu na reakcję.</span>
+        </h1>
+
+        <p>
+            IOIO GO to system, który wykrywa zbliżające się
+            pojazdy uprzywilejowane i ostrzega kierowcę,
+            zanim znajdą się bezpośrednio w jego pobliżu.
+        </p>
+
+        <button
+            class="primary-button"
+            onclick="openModal()"
+        >
+            CHCĘ PRZETESTOWAĆ IOIO GO
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUCT FORM
+         ========================= -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <h2>
+                W jakiej formie widzisz IOIO GO?
+            </h2>
+
+            <p>
+                Wybierz rozwiązanie, które najlepiej pasowałoby
+                do Twojego samochodu.
+            </p>
+
+        </div>
+
+
+        <div class="options">
+
+
+            <div
+                class="option"
+                onclick="selectOption(this, 'Telefon')"
+            >
+
+                <div class="option-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Telefon
+                </h3>
+
+                <p>
+                    Aplikacja na smartfonie.
+                </p>
+
+            </div>
+
+
+            <div
+                class="option"
+                onclick="selectOption(this, 'CarPlay / Android Auto')"
+            >
+
+                <div class="option-icon">
+                    🚗
+                </div>
+
+                <h3>
+                    CarPlay / Android Auto
+                </h3>
+
+                <p>
+                    Informacja bezpośrednio na ekranie samochodu.
+                </p>
+
+            </div>
+
+
+            <div
+                class="option"
+                onclick="selectOption(this, 'Wbudowane w samochód')"
+            >
+
+                <div class="option-icon">
+                    🚘
+                </div>
+
+                <h3>
+                    Wbudowane w samochód
+                </h3>
+
+                <p>
+                    Funkcja zintegrowana z systemem pojazdu.
+                </p>
+
+            </div>
+
+
+            <div
+                class="option"
+                onclick="selectOption(this, 'Osobne urządzenie')"
+            >
+
+                <div class="option-icon">
+                    📡
+                </div>
+
+                <h3>
+                    Osobne urządzenie
+                </h3>
+
+                <p>
+                    Dedykowane urządzenie zamontowane w samochodzie.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DRIVING SCENARIO
+         ========================= -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <h2>
+                Wyobraź sobie, że prowadzisz samochód.
+            </h2>
+
+            <p>
+                Jak zareagujesz, gdy IOIO GO ostrzeże Cię o nadjeżdżającym pojeździe?
+            </p>
+
+        </div>
+
+
+        <div class="scenario">
+
+
+            <div class="scenario-card">
+
+                <div class="alert-label">
+                    🚨 POJAZD UPRZYWILEJOWANY
+                </div>
+
+                <h3>
+                    Zbliża się
+                </h3>
+
+                <p>
+                    Około 300 m za Tobą
+                </p>
+
+            </div>
+
+
+            <div class="reaction-title">
+                Co robisz?
+            </div>
+
+
+            <div class="reaction-grid">
+
+                <button
+                    class="reaction"
+                    onclick="selectReaction(this, 'Zwalniam')"
+                >
+                    Zwalniam
+                </button>
+
+                <button
+                    class="reaction"
+                    onclick="selectReaction(this, 'Sprawdzam lusterka')"
+                >
+                    Sprawdzam lusterka
+                </button>
+
+                <button
+                    class="reaction"
+                    onclick="selectReaction(this, 'Przygotowuję się do zjechania')"
+                >
+                    Przygotowuję się do zjechania
+                </button>
+
+                <button
+                    class="reaction"
+                    onclick="selectReaction(this, 'Coś innego')"
+                >
+                    Coś innego
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+
+        IOIO GO • Wczesny prototyp • Eksperyment badawczy
+
+    </footer>
+
+</div>
+
+
+
+<!-- =========================
+     MODAL
+     ========================= -->
+
+<div
+    class="modal"
+    id="modal"
+>
+
+    <div class="modal-content">
+
+    <div id="form-content">
+
+        <h2>
+            Chcesz przetestować IOIO GO?
+        </h2>
+
+        <p>
+            Pracujemy nad pierwszym prototypem i szukamy osób,
+            które chciałyby go przetestować oraz podzielić się
+            swoją opinią.
+        </p>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Imię (opcjonalnie)"
+        >
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Adres e-mail"
+        >
+
+        <div class="modal-buttons">
+
+            <button
+                class="secondary-button"
+                onclick="closeModal()"
+            >
+                Anuluj
+            </button>
+
+            <button
+                class="primary-button"
+                onclick="submitInterest()"
+            >
+                CHCĘ DOŁĄCZYĆ
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="success-content"
+        style="display: none;"
+    >
+
+        <div class="success-message">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Dzięki! 🚑
+            </h2>
+
+            <p>
+                Twoje zainteresowanie IOIO GO zostało zapisane.
+                Jeśli rozpoczniemy testy prototypu,
+                skontaktujemy się pod podanym adresem.
+            </p>
+
+            <button
+                class="primary-button"
+                onclick="closeModal()"
+            >
+                ZAMKNIJ
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+    /* =========================
+       MODAL
+       ========================= */
+
+    function openModal() {
+
+    logEvent({
+
+        event: "interest_click",
+
+        product: selectedOption,
+
+        reaction: selectedReaction
+
+    });
+
+
+    document
+        .getElementById("modal")
+        .classList
+        .add("active");
+
+}
+
+
+    function closeModal() {
+
+    document
+        .getElementById("modal")
+        .classList
+        .remove("active");
+
+
+    document
+        .getElementById("form-content")
+        .style.display = "block";
+
+
+    document
+        .getElementById("success-content")
+        .style.display = "none";
+
+}
+
+
+
+    /* =========================
+       WYBÓR FORMY PRODUKTU
+       ========================= */
+
+    let selectedOption = null;
+    const BACKEND_URL = 
+    "https://script.google.com/macros/s/AKfycbzs8nfjmcjuGT-qMsESLe7FnzKUoy0LszwiLYLDF4jSX9MTmQGSrtsJyRJhIEq8cKmt/exec";
+
+    function logEvent(data) {
+
+    fetch(BACKEND_URL, {
+
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+        },
+
+        body: JSON.stringify(data)
+
+    }).catch(function(error) {
+
+        console.error(
+            "Nie udało się zapisać danych:",
+            error
+        );
+
+    });
+}
+
+    function selectOption(element, option) {
+
+    document
+        .querySelectorAll(".option")
+        .forEach(function(item) {
+
+            item.classList.remove("selected");
+
+        });
+
+
+    element.classList.add("selected");
+
+
+    selectedOption = option;
+
+
+    console.log(
+        "Wybrana forma produktu:",
+        selectedOption
+    );
+
+
+    logEvent({
+
+        event: "product_form",
+
+        product: selectedOption
+
+    });
+
+}
+
+
+
+    /* =========================
+       REAKCJA NA OSTRZEŻENIE
+       ========================= */
+
+    let selectedReaction = null;
+
+
+    function selectReaction(button, reaction) {
+
+    document
+        .querySelectorAll(".reaction")
+        .forEach(function(item) {
+
+            item.classList.remove("selected");
+
+        });
+
+
+    button.classList.add("selected");
+
+
+    selectedReaction = reaction;
+
+
+    console.log(
+        "Reakcja użytkownika:",
+        selectedReaction
+    );
+
+
+    logEvent({
+
+        event: "reaction",
+
+        reaction: selectedReaction,
+
+        product: selectedOption
+
+    });
+}
+
+
+
+    /* =========================
+       ZGŁOSZENIE ZAINTERESOWANIA
+       ========================= */
+
+    function submitInterest() {
+
+    const name =
+        document
+            .getElementById("name")
+            .value
+            .trim();
+
+
+    const email =
+        document
+            .getElementById("email")
+            .value
+            .trim();
+
+
+    if (!email) {
+
+        alert(
+            "Podaj adres e-mail, żebyśmy mogli się skontaktować."
+        );
+
+        return;
+
+    }
+
+
+    logEvent({
+
+    event: "signup",
+
+    product: selectedOption,
+
+    reaction: selectedReaction,
+
+    name: name,
+
+    email: email
+
+});
+
+
+    document
+        .getElementById("form-content")
+        .style.display = "none";
+
+    document
+        .getElementById("success-content")
+        .style.display = "block";
+
+
+}
+
+
+
+    /* =========================
+       ZAMKNIĘCIE MODALA
+       KLIKNIĘCIEM POZA NIM
+       ========================= */
+
+    document
+        .getElementById("modal")
+        .addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target ===
+                    document.getElementById("modal")
+                ) {
+
+                    closeModal();
+
+                }
+
+            }
+        );
+        logEvent({
+    event: "page_view"
+});
+
+
+</script>
+
+</body>
+</html>
